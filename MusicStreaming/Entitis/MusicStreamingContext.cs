@@ -18,7 +18,7 @@ namespace MusicStreaming.Entitis
         }
 
         public virtual DbSet<AccountMusic> AccountMusics { get; set; }
-        public virtual DbSet<Accout> Accouts { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Music> Musics { get; set; }
         public virtual DbSet<Singer> Singers { get; set; }
         public virtual DbSet<Type> Types { get; set; }
@@ -47,9 +47,9 @@ namespace MusicStreaming.Entitis
                 entity.Property(e => e.IdMusic).HasColumnName("Id_Music");
             });
 
-            modelBuilder.Entity<Accout>(entity =>
+            modelBuilder.Entity<Account>(entity =>
             {
-                entity.ToTable("Accout");
+                entity.ToTable("Account");
 
                 entity.Property(e => e.Name).HasMaxLength(50);
 

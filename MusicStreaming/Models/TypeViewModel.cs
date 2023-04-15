@@ -3,13 +3,12 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MusicStreaming.Entitis
+namespace MusicStreaming.Models
 {
-    public partial class Accout
+    public partial class TypeViewModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
+        public string NameType { get; set; }
         public bool? IsDelete { get; set; }
     }
 }
