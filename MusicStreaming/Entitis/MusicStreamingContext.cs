@@ -77,11 +77,9 @@ namespace MusicStreaming.Entitis
 
             modelBuilder.Entity<Singer>(entity =>
             {
-                entity.HasNoKey();
 
                 entity.ToTable("Singer");
 
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ImgInfo)
                     .HasMaxLength(50)

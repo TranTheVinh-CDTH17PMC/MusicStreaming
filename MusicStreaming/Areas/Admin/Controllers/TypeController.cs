@@ -32,7 +32,7 @@ namespace MusicStreaming.Areas.Admin.Controllers
                     Id = item.Id,
                     NameType = item.NameType,
                     IsDelete = item.IsDelete
-                }).Where(x=>x.IsDelete!=true);
+                }).Where(x=>x.IsDelete == true);
             return View(model);
         }
 

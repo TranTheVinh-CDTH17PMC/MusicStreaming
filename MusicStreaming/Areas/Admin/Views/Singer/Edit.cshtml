@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="Singer" asp-action="Edit" asp-area="Admin">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Cập nhật ca sĩ</h1>
+        <div style=display:flex;padding:10px 0px;align-items: baseline;flex-direction: row;width: 100%;">
+            <div style="width:100%">
+                <span>Tên ca sĩ</span>
+                <input value="@Model.NameSinger" name="NameSinger" id="NameSinger" class="form-control" placeholder="Tên ca sĩ..." style="width:90%;padding-left:10px" required />
+                <p style="padding: 5px;"></p>
+                <span>Hình ảnh ca sĩ</span>
+                <p style="padding: 5px;"></p>
+                <img src="~/Content/Img_Singer/@Model.ImgInfo" style="width:150px;height:auto;border-radius:10px" />
+                <p style="padding: 5px;"></p>
+                <span>Cập nhật hình ảnh ca sĩ</span>
+                <input id="file" name="file" type="file" class="form-control" placeholder="Hình ảnh" aria-label="Search" aria-describedby="basic-addon2" style="width:90%;padding-left:10px">
+                <p style="padding: 5px;"></p>
+            </div>
+        </div>
+        <button class="btn btn-primary">Cập nhật</button>
+        <!-- DataTales Example -->
+    </div>
+</form>
+
