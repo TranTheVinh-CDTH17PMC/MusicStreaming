@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MusicStreaming.Entitis;
 
 namespace MusicStreaming.Interface
 {
-    interface IType
+    public interface ITypes : RInterface<Entitis.Type>
     {
+
     }
 }

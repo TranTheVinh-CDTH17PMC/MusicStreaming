@@ -4,15 +4,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using MusicStreaming.Interface;
+using MusicStreaming.Models;
+using MusicStreaming.Repository;
 
 namespace MusicStreaming.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Route("Admin")]
+    [Route("Admin/Type")]
     public class TypeController : Controller
     {
+        private ITypes types;
+        public TypeController(ITypes _types)
+        {
+            types = _types;
+        }
         // GET: TypeController
+        [Route("")]
+        [Route("Index")]
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<TypeViewModel> model = types.SelectAll().Select(
+                item => new TypeViewModel
+                {
+                    Id = item.Id,
+                    NameType = item.NameType,
+                    IsDelete = item.IsDelete
+                }).Where(x=>x.IsDelete!=true);
+            return View(model);
         }
 
         // GET: TypeController/Details/5
@@ -20,7 +41,7 @@ namespace MusicStreaming.Areas.Admin.Controllers
         {
             return View();
         }
-
+        [Route("Create")]
         // GET: TypeController/Create
         public ActionResult Create()
         {
@@ -29,12 +50,18 @@ namespace MusicStreaming.Areas.Admin.Controllers
 
         // POST: TypeController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [Route("Create")]
+        public ActionResult Create(TypeViewModel model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var _type = new Entitis.Type();
+                _type.NameType = model.NameType;
+                _type.IsDelete = true;
+                types.Insert(_type);
+                types.Save();
+               
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -43,19 +70,25 @@ namespace MusicStreaming.Areas.Admin.Controllers
         }
 
         // GET: TypeController/Edit/5
+        [Route("Edit")]
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = types.SelectById(id);
+            return View(model);
         }
 
         // POST: TypeController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("Edit")]
+        public ActionResult Edit(int id, TypeViewModel model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var _type = types.SelectById(id);
+                _type.NameType = model.NameType;
+                types.Update(_type);
+                types.Save();
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -63,20 +96,18 @@ namespace MusicStreaming.Areas.Admin.Controllers
             }
         }
 
-        // GET: TypeController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: TypeController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [Route("Delete")]
+        public ActionResult Delete(int IdDelete)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var _type = types.SelectById(IdDelete);
+                _type.IsDelete = false;
+                types.Update(_type);
+                types.Save();
+                return RedirectToAction("Index");
             }
             catch
             {

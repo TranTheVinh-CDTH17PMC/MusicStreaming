@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<form method="post" enctype="multipart/form-data" asp-controller="Type" asp-action="Edit" asp-area="Admin">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Cập nhật loại bài hát</h1>
+        <div style=display:flex;padding:10px 0px;align-items: baseline;flex-direction: row;width: 100%;">
+            <div style="width:100%">
+                <span>Tên loại</span>
+                <input value="@Model.NameType" name="NameType" id="NameType" class="form-control" placeholder="Mô tả..." style="width:90%;padding-left:10px" required />
+                <p style="padding: 5px;"></p>
+            </div>
+        </div>
+        <button class="btn btn-primary">Cập nhật</button>
+        <!-- DataTales Example -->
+    </div>
+</form>
+

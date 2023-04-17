@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div style="display:flex;padding:10px 0px">
+        <a href="/Admin/Type/Create" class="btn btn-primary" class="btn btn-primary">Thêm Mới</a>
+    </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách thể loại nhạc</h6>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Delete", "Type", FormMethod.Post))
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên loại</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên loại</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.NameType</td>
+                                    <td style="display:flex; padding:5px">
+                                        <a href="@Url.Action("Edit", "Type", new { @Id = item.Id })" class="btn btn-success">
+                                            Cập nhật
+                                        </a>
+                                        <button style="margin-left: 5px;" type="submit" class="btn btn-danger" id="IdDelete" name="IdDelete" value="@item.Id" onclick="return ConfirmDelete();">Xóa</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+</script>
+

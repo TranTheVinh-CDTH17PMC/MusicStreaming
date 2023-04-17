@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MusicStreaming.Entitis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MusicStreaming.Interface
 {
-    interface IAccount
+    public interface IAccount : RInterface<Account>
     {
     }
 }

@@ -26,6 +26,7 @@ namespace MusicStreaming
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient(typeof(RInterface<>), typeof(RRepository<>));
+            services.AddTransient<ITypes, RTypes>();
             services.AddControllersWithViews();
             
         }

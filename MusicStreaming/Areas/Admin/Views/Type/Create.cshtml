@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data"  asp-controller="Type" asp-action="Create" asp-area="Admin">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Thêm mới loại bài hát</h1>
+        <div style=display:flex;padding:10px 0px;align-items: baseline;flex-direction: row;width: 100%;">
+            <div style="width:100%">
+                <span>Tên loại</span>
+                <input name="NameType" id="NameType" class="form-control" placeholder="Mô tả..." style="width:90%;padding-left:10px" required />
+                <p style="padding: 5px;"></p>
+            </div>
+        </div>
+        <button class="btn btn-primary">Tạo mới</button>
+        <!-- DataTales Example -->
+    </div>
+</form>
+

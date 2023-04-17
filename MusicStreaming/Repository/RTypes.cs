@@ -8,7 +8,7 @@ using Type = MusicStreaming.Entitis.Type;
 
 namespace MusicStreaming.Repository
 {
-    public class RType : RRepository<Type>, IType
+    public class RTypes : RRepository<Type>, ITypes
     {
 
     }
