@@ -15,5 +15,7 @@ namespace MusicStreaming.Models
         public int? IdType { get; set; }
         public string LinkFile { get; set; }
         public bool? IsDelete { get; set; }
+        public string NameSinger { get; set; }
+        public string NameType { get; set; }
     }
 }

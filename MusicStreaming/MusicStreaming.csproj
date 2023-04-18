@@ -24,6 +24,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\Content\Img_Singer\" />
+    <Folder Include="wwwroot\Content\Img_Music\" />
+    <Folder Include="wwwroot\Content\Link_Mp3\" />
   </ItemGroup>
 
 </Project>

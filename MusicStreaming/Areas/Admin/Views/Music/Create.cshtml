@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Create", "Music", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Thêm mới bài hát</h1>
+        <div style=display:flex;padding:10px 0px;align-items: baseline;flex-direction: row;width: 100%;">
+            <div style="width:100%">
+                <span>Tên bài hát</span>
+                <input name="NameMusic" id="NameMusic" class="form-control" placeholder="Tên bài hát" style="width:90%;padding-left:10px" required />
+                <p style="padding: 5px;"></p>
+                <span>Hình ảnh mô tả</span>
+                <input id="fileimg" name="fileimg" type="file" class="form-control" placeholder="Hình ảnh" aria-label="Search" aria-describedby="basic-addon2" style="width:90%;padding-left:10px">
+                <p style="padding: 5px;"></p>
+                <span>File Mp3</span>
+                <input id="filemp3" name="filemp3" type="file" class="form-control" placeholder="File Mp3" aria-label="Search" aria-describedby="basic-addon2" style="width:90%;padding-left:10px">
+                <p style="padding: 5px;"></p>
+            </div>
+            <div style="width:100%">
+                <span>Ca sĩ</span>
+                <select class="form-control" aria-label="Chọn đáp án đúng" id="IdSinger" name="IdSinger" style="width:90%;padding-left:10px" required>
+                    <option value="" data-code="">-Chọn ca sĩ-</option>
+                    @foreach (var item in ViewBag.ListSinger)
+                    {
+                        <option value="@item.Id">@item.NameSinger</option>
+                    }
+                </select>
+                <p style="padding: 5px;"></p>
+                <span>Thể loại</span>
+                <select class="form-control" aria-label="Chọn đáp án đúng" id="IdType" name="IdType" style="width:90%;padding-left:10px" required>
+                    <option value="" data-code="">-Chọn loại-</option>
+                    @foreach (var item in ViewBag.ListType)
+                    {
+                        <option value="@item.Id">@item.NameType</option>
+                    }
+                </select>
+                <p style="padding: 5px;"></p>
+            </div>
+        </div>
+        <button class="btn btn-primary">Tạo mới</button>
+        <!-- DataTales Example -->
+    </div>
+}
+
